@@ -1,0 +1,49 @@
+// Functions using Promises
+function createPostPromised() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log('Post created');
+      resolve('Post created');
+    }, 2000);
+  });
+}
+
+function deletePostPromised() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log('Post deleted');
+      resolve('Post deleted');
+    }, 1000);
+  });
+}
+
+function getColdDrinksPromised() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log('Got cold drinks');
+      resolve('Got cold drinks');
+    }, 1500);
+  });
+}
+
+// Using Promises
+createPostPromised()
+  .then(() => deletePostPromised())
+  .then(() => getColdDrinksPromised())
+  .then(() => console.log('All tasks completed using Promises'))
+  .catch((error) => console.error(error));
+
+// Functions using async/await
+async function performTasksAsync() {
+  try {
+    await createPostPromised();
+    await deletePostPromised();
+    await getColdDrinksPromised();
+    console.log('All tasks completed using async/await');
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Using async/await
+performTasksAsync();
